@@ -1,0 +1,53 @@
+ ++++++++++++++++++ App.jsx ++++++++++++++++++++++++++++++
+
+import React, { useState } from 'react';
+import Lists from "./Lists.jsx";
+
+function App() {
+  const todo = [
+    { activity: "ACT1", done: 'true' },
+    { activity: "ACT2", done: 'false' },
+    { activity: "ACT3", done: 'true' },
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const todoFiltered = todo.filter(to => {
+    return selectedCategory === 'All' || to.done === selectedCategory;
+  });
+
+  return (
+    <div>
+      <h1>Hello, World!</h1>
+      <div style={{ marginBottom: '1rem' }}>
+        <button onClick={() => setSelectedCategory('All')}>All</button>
+        <button onClick={() => setSelectedCategory('true')}>True</button>
+        <button onClick={() => setSelectedCategory('false')}>False</button>
+      </div>
+      <Lists data={todoFiltered} />
+    </div>
+  );
+}
+
+export default App;
+
+
+========================================================================================================================
+++++++++++++++++++ Lists.jsx ++++++++++++++++++++++++++++++
+
+import React from 'react';
+
+const Lists = ({ data }) => {
+  return (
+    <ul>
+      {data.map((to, index) => (
+        <li key={index}>
+          {to.activity} : <span>{to.done}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default Lists;
+
