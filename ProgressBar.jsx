@@ -3,10 +3,15 @@ import "./styles.css"
 const ProgressBar = ({value=0}) =>{
   
   const [percent, setPercent] = useState(value);
+  const target = 70;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (percent < target) setPercent(percent + 1);
+      else clearInterval(interval);
+    }, 50);
 
-  useEffect(()=>{
-    setPercent(Math.min(100, Math.max(value, 0)));
-  }, [value])
+    return () => clearInterval(interval);
+  }, [value]);
   
   return(
     <div className="progress">
@@ -37,9 +42,10 @@ const App = () => {
 export default App;
 
 
-==================  styles.css============================
 
-.app{
+=============================== styles.css ==========================================
+
+  .app{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,9 +78,4 @@ export default App;
   align-content: center;
   z-index: 2;
 }
-
-
-
-
-
 
