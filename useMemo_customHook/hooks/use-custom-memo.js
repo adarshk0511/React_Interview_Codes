@@ -30,7 +30,9 @@ const useCustomMemo = (cb, deps) => {
     };
   }, []);
 
+  //return the memoized val
   return memoizedRef.current.value;
 };
 
 export default useCustomMemo;
+
