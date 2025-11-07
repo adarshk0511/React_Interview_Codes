@@ -50,7 +50,7 @@ export default function App() {
       <div
         className="grid"
         style={{
-          gridTemplateColumns: `repeat(${config[0].length}, 1fr)`,
+          gridTemplateColumns: `repeat(${config[0].length}, 1fr)`, // make the actual grid structure
         }}
       >
         {config
