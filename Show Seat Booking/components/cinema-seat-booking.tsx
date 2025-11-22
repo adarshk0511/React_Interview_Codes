@@ -9,7 +9,7 @@ const CinemaSeatBooking = ({
   },
   booksSeats = [],
   currency = "$",
-  onBookingComplete = () => {},
+  onBookingComplete = (seat) => {},
   title = "Cinema Hall Booking",
   subtitle = "Select your prefered seats",
 }) => {
@@ -27,15 +27,17 @@ const CinemaSeatBooking = ({
     const seatTypeEntries = Object.entries(seatTypes);
     for (let i = 0; i < seatTypeEntries.length; i++) {
       const [type, config] = seatTypeEntries[i];
-
       if (config.rows.includes(row)) {
         const color = colors[i % colors.length];
         return { type, color, ...config };
       }
-
-      const [firstType, firstConfig] = seatTypeEntries[0];
-      return { type: firstType, color: colors[0], ...firstConfig };
     }
+    // default if none matched
+    const [firstType, firstConfig] = seatTypeEntries[0] || [
+      "regular",
+      { name: "Regular", price: 150, rows: [] },
+    ];
+    return { type: firstType, color: colors[0], ...firstConfig };
   };
   const initializeSeats = useMemo(() => {
     const seats = [];
@@ -61,10 +63,20 @@ const CinemaSeatBooking = ({
     return seats;
   }, [layout, seatTypes, booksSeats]);
 
+  type SeatType = {
+    id: string;
+    row: number;
+    seat: number;
+    type: string;
+    price: number;
+    color: string;
+    status: "booked" | "available";
+    selected: boolean;
+  };
   const [seats, setSeats] = useState(initializeSeats);
-  const [selectedSeats, setSelectedSeats] = useState<(string | number)[]>([]);
+  const [selectedSeats, setSelectedSeats] = useState<SeatType[]>([]);
 
-  const getColorClass = (colorName) => {
+  const getColorClass = (colorName: string) => {
     const colorMap = {
       blue: "bg-blue-100 border-blue-300 text-blue-800 hover:bg-blue-200",
       purple:
@@ -97,7 +109,33 @@ const CinemaSeatBooking = ({
     return `${baseClass} ${getColorClass(seat.color)}`;
   };
 
-  const handleSeatClick = (rowIndex, seatIndex) => {};
+  const getTotalPrice = () => {
+    return selectedSeats.reduce((total, seat) => total + seat.price, 0);
+  };
+
+  const handleSeatClick = (rowIndex, seatIndex) => {
+    const seat = seats[rowIndex][seatIndex];
+    if (seat === "booked") return;
+
+    const isCurrentlySelected = seat.selected;
+
+    setSeats((prevSeats) => {
+      return prevSeats.map((row, rIdx) =>
+        row.map((s, sIdx) => {
+          if (rIdx === rowIndex && sIdx === seatIndex) {
+            return { ...s, selected: !s.selected };
+          }
+          return s;
+        })
+      );
+    });
+
+    if (isCurrentlySelected) {
+      setSelectedSeats((prev) => prev.filter((s) => s.id !== seat.id));
+    } else {
+      setSelectedSeats((prev) => [...prev, seat]);
+    }
+  };
 
   const renderSeatSection = (seatRow, startIndex, endIndex) => {
     return (
@@ -107,7 +145,7 @@ const CinemaSeatBooking = ({
             <div
               key={seat.id}
               className={getSeatClassname(seat)}
-              onClick={handleSeatClick(seat.row, startIndex + index)}
+              onClick={() => handleSeatClick(seat.row, startIndex + index)}
             >
               {startIndex + index + 1}
             </div>
@@ -126,6 +164,39 @@ const CinemaSeatBooking = ({
       };
     }
   );
+
+  const handleBooking = () => {
+    if (selectedSeats.length === 0) {
+      alert("Please select atleast one seat");
+      return;
+    }
+
+    setSeats((prevSeats) => {
+      return prevSeats.map((row) =>
+        row.map((seat) => {
+          if (selectedSeats.some((selected) => selected.id === seat.id)) {
+            return { ...seat, status: "booked", selected: false };
+          }
+
+          return seat;
+        })
+      );
+    });
+
+    onBookingComplete({
+      seats: selectedSeats,
+      totalPrice: getTotalPrice(),
+      seatIds: selectedSeats.map((seat) => seat.id),
+    });
+
+    alert(
+      `Successfully booked ${
+        selectedSeats.length
+      } seat(s) for${currency}${getTotalPrice()}`
+    );
+
+    setSelectedSeats([]);
+  };
 
   return (
     <div className="w-full min-h-screen bg-gray-50 p-4">
@@ -169,11 +240,74 @@ const CinemaSeatBooking = ({
       {/* Legend */}
       <div className="flex flex-wrap justify-center gap-6 mb-6 p-4 bg-gray-50 rounded-lg">
         {uniqueSeatTypes.map((seatType) => {
-          <div key={seatType.type} className="flex items-center"></div>;
+          return (
+            <div key={seatType.type} className="flex items-center">
+              <div
+                className={`w-6 h-6 border-2 rounded-t-lg mr-2 ${
+                  getColorClass(seatType.color) || "bg-blue-100 border-blue-300"
+                }`}
+              ></div>
+
+              <span className="text-sm">
+                {seatType.name} ({currency}
+                {seatType.price})
+              </span>
+            </div>
+          );
         })}
+
+        <div className="flex items-center">
+          <div className="w-6 h-6 bg-green-500 border-2 border-green-600 rounded-t-lg mr-2"></div>
+          <span className="text-sm">Selected</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-6 h-6 bg-gray-400 border-2 border-gray-500 rounded-t-lg mr-2"></div>
+          <span className="text-sm">Booked</span>
+        </div>
       </div>
+
       {/* Summery */}
+      <div className="bg-gray-50 rounded-lg p-4 mb-4">
+        <h3 className="font-bold text-lg mb-2">Booking Summery</h3>
+        {selectedSeats.length > 0 ? (
+          <div>
+            <p className="bb-2">
+              Selected Seats:{" "}
+              <span className="font-medium">
+                {selectedSeats.map((s) => s.id).join(", ")}
+              </span>
+            </p>
+            <p className="mb-2">
+              {" "}
+              Number of Seats:{" "}
+              <span className="font-medium">{selectedSeats.length}</span>
+            </p>
+
+            <p className="text-xl font-bold text-green-600">
+              Total: {currency} {getTotalPrice()}
+            </p>
+          </div>
+        ) : (
+          <p className="text-gray-500">No Seat selected</p>
+        )}
+      </div>
+
       {/* Book Button */}
+      <button
+        onClick={handleBooking}
+        disabled={selectedSeats.length === 0}
+        className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 ${
+          selectedSeats.length > 0
+            ? "bg-green-500 hover:bg-green-600 text-white transform hover:scale-105"
+            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+        }`}
+      >
+        {selectedSeats.length > 0
+          ? `Book ${
+              selectedSeats.length
+            } Seat(s) - ${currency}${getTotalPrice()}`
+          : "Select Seats to book"}
+      </button>
     </div>
   );
 };
