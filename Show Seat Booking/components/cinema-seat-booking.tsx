@@ -195,6 +195,7 @@ const CinemaSeatBooking = ({
       } seat(s) for${currency}${getTotalPrice()}`
     );
 
+    //reset function
     setSelectedSeats([]);
   };
 
