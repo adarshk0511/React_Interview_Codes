@@ -1,0 +1,42 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.product-img {
+  height: 200px;
+  width: 200px;
+}
+
+.product-card {
+  display: flex;
+  width: 210px;
+  flex-wrap: wrap;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.products-conatiner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page-number {
+  padding: 3px;
+  margin: 2px;
+  border: 1px solid black;
+  background-color: lightgray;
+  /* color: aliceblue; */
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.pagination-conatiner {
+  padding: 10px;
+}
+
+.active {
+  background-color: aqua;
+}
