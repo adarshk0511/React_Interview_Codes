@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.outer {
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.inner {
+  width: 50%;
+  background-color: chartreuse;
+  text-align: right;
+  transition: 0.5s ease-in;
+}
