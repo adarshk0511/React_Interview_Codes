@@ -15,6 +15,7 @@ const ProgressBar = ({ progress }) => {
         className="inner"
         style={{
           // width: `${progress}%`,
+          // "translateX" takes the bar to the left/right side wrt X axis 
           transform: `translateX(${aniProgress - 100}%)`,
           color: aniProgress < 5 ? "black" : "white",
         }}
