@@ -1,0 +1,24 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 5px;
+}
+
+.warning {
+  color: crimson;
+}
+
+.submit {
+  margin: auto;
+  width: 200px;
+  color: whitesmoke;
+  background-color: chartreuse;
+}
