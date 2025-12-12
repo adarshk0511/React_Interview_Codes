@@ -73,6 +73,7 @@ export default function App() {
   const totalEMI = () => {
     return numberWithCommas((emi * tenure).toFixed(0));
   };
+  //DP and emi is inverse
 
   return (
     <div className="App">
