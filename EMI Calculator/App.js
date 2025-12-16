@@ -6,6 +6,8 @@ import TextInput from "./components/text-input";
 import SliderInput from "./components/slider-input";
 
 export default function App() {
+
+  //All the constants 
   const [cost, setCost] = useState(0);
   const [interest, setInterest] = useState(10);
   const [fee, setFee] = useState(1);
