@@ -1,1 +1,2 @@
-export const tenureData = [12, 24, 36, 48, 60];
+export const tenureData = [6, 12, 24, 36, 48, 60];
+
