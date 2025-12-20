@@ -121,6 +121,7 @@ export default function App() {
         max={calculateEMI(0)}
       />
 
+      //For tenure selection
       <span className="title">Tenure</span>
       <div className="tenureContainer">
         {tenureData.map((t) => {
