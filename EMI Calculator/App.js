@@ -75,7 +75,7 @@ export default function App() {
   const totalEMI = () => {
     return numberWithCommas((emi * tenure).toFixed(0));
   };
-  //DP and emi is inverse
+  //DP and emi is inverse and cost should be provided for any calculation
 
   return (
     <div className="App">
