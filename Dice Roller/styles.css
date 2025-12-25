@@ -1,0 +1,20 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dice {
+  height: 50px;
+  width: 50px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  margin-bottom: 20px;
+}
