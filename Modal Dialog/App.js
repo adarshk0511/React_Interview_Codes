@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  //state to handle the function of the modal
   const [isOpen, setIsOpen] = useState(true);
 
   const closeForm = () => {
