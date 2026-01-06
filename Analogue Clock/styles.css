@@ -1,0 +1,48 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.clock {
+  position: relative;
+  background-color: cadetblue;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.hand {
+  height: 2px;
+  width: 50%;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0% 50%;
+  transition: transform 0.1s linear;
+  border-radius: 10px;
+}
+
+.hour {
+  width: 30%;
+  height: 4px;
+}
+
+.minute {
+  width: 45%;
+  height: 3px;
+}
+
+.second {
+  width: 48%;
+  height: 1px;
+  background-color: red;
+}
+
+.number {
+  position: absolute;
+  top: 46%;
+  left: 48%;
+  transform-origin: center;
+  font-weight: bold;
+}
