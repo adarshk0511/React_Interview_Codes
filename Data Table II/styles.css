@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+table {
+  border: 2px solid;
+}
+
+thead {
+  background-color: darkgray;
+}
+
+td {
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
