@@ -1,0 +1,16 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+button {
+  height: 30px;
+}
+
+.grid {
+  width: 100px;
+}
+
+.cell.active {
+  background-color: aquamarine;
+}
