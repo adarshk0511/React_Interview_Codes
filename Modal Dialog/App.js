@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 export default function App() {
-  //state to handle the function of the modal
   const [isOpen, setIsOpen] = useState(true);
 
   const closeForm = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeForm();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
   return (
     <div className="App">
       <h1>Modal Dialog</h1>
