@@ -1,0 +1,36 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.histogram {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: end;
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+}
+
+.bar {
+  background-color: aqua;
+  width: 10px;
+}
+
+.bar-wrapper {
+  position: relative;
+  margin-left: 20px;
+}
+
+.label {
+  position: absolute;
+  left: -10px;
+}
+
+.count {
+  position: absolute;
+  bottom: 100%; /* places it above the bar */
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
