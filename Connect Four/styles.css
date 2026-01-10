@@ -1,0 +1,28 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.board {
+  border: 2px solid;
+  padding: 10px;
+  background-color: darkgrey;
+}
+
+.cell {
+  margin: 3px;
+  border-radius: 50%;
+  border: 1px solid;
+  height: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.winner {
+  background-color: chartreuse;
+  width: 300px;
+  padding: 10px;
+  margin-left: 25%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
