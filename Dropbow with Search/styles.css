@@ -16,3 +16,14 @@
   width: 500px;
   padding: 5px;
 }
+
+.result {
+  display: block;
+  padding: 2px;
+}
+
+.result:hover,
+.result.highlighted {
+  background-color: blanchedalmond;
+  cursor: pointer;
+}
