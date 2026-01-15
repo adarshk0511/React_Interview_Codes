@@ -1,0 +1,51 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.outer {
+  display: flex;
+  flex-direction: row;
+}
+
+.results-container {
+  width: 200px;
+  margin: auto;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.search-input {
+  width: 200px;
+  padding: 5px;
+}
+.result {
+  display: block;
+  padding: 2px;
+}
+.result:hover,
+.result.highlighted {
+  background-color: blanchedalmond;
+  cursor: pointer;
+}
+
+.tags-container {
+  display: bolck;
+  border: 1px solid;
+  margin-left: 5px;
+  padding-bottom: 10px;
+}
+
+.tag {
+  border: 1px solid;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 50%;
+  border: none;
+}
