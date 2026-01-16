@@ -11,6 +11,7 @@ const Dropdown = () => {
     opt.toLowerCase().includes(input.toLowerCase())
   );
 
+  //Handle keyboard inputs
   const handleKeyDown = (e) => {
     if (!showResults) return;
 
@@ -88,3 +89,4 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
+
