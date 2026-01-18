@@ -6,6 +6,7 @@ const Toast = () => {
   const [toasts, setToasts] = useState([]);
 
   //Fix for useEffect running twice during initialisation
+  // useRef is used as it stays persistent during renders 
   const initialized = useRef(false);
 
   useEffect(() => {
@@ -33,3 +34,4 @@ const Toast = () => {
 };
 
 export default Toast;
+
