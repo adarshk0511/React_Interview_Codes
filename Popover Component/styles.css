@@ -1,0 +1,52 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.popover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.popover {
+  position: absolute;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* TOP */
+.popover-top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+}
+
+/* BOTTOM */
+.popover-bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+}
+
+/* LEFT */
+.popover-left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 6px;
+}
+
+/* RIGHT */
+.popover-right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 6px;
+}
