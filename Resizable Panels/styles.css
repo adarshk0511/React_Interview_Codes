@@ -1,0 +1,30 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  height: 300px;
+  border: 1px solid;
+}
+
+.left-panel {
+  width: 300px;
+  background-color: indigo;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.right-panel {
+  flex: 1;
+  background-color: chartreuse;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.resizer {
+  width: 6px;
+  cursor: col-resize;
+  background: black;
+}
