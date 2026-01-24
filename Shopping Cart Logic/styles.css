@@ -1,0 +1,41 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  border: 1px solid;
+  margin: 5px;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.product.heading {
+  background-color: darkgrey;
+}
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  border: 1px solid;
+  margin: 5px;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.btn {
+  height: 20px;
+  font-size: 10px;
+  margin-top: 5px;
+}
