@@ -42,7 +42,13 @@ export default function App() {
     dispatch({ type: ACTIONS.SUBMIT_START });
 
     setTimeout(() => {
-      alert("Form Submitted" + state.value);
+      alert(
+        "Form Submitted" +
+          " Email: " +
+          state.values.email +
+          " & Password: " +
+          state.values.password
+      );
       dispatch({ type: ACTIONS.SUBMIT_SUCCESS });
     }, 1000);
   };
