@@ -1,0 +1,83 @@
+.App {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-container {
+  width: 400px;
+  height: 450px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable messages */
+.list {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+/* Fixed input bar */
+.input-div {
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid #ccc;
+  background: white;
+}
+
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.input-btn {
+  margin-left: 8px;
+  border-radius: 50%;
+  background-color: #dcf8c6;
+  height: 36px;
+  width: 36px;
+}
+
+/* Each message row */
+.message-row {
+  display: flex;
+}
+
+/* Align based on sender */
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.bot {
+  justify-content: flex-start;
+}
+
+/* Message bubble */
+.chat-bubble {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* User bubble */
+.message-row.user .chat-bubble {
+  background-color: #dcf8c6;
+  border-top-right-radius: 0;
+}
+
+/* Bot bubble */
+.message-row.bot .chat-bubble {
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border: 1px solid #ddd;
+}
