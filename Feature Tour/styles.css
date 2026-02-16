@@ -1,0 +1,29 @@
+.App {
+  /* font-family: sans-serif;
+  text-align: center; */
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.highlight {
+  position: absolute;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.tooltip {
+  position: absolute;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  z-index: 1001;
+  width: 250px;
+}
