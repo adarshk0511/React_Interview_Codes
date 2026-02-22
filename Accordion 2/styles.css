@@ -2,3 +2,20 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.container {
+  background-color: rgb(234, 229, 229);
+  width: 300px;
+  padding: 10px;
+}
+
+.question {
+  background-color: rgb(163, 159, 159);
+  margin: 2px;
+}
+
+.answer {
+  background-color: rgb(255, 251, 251);
+  margin-top: 0px;
+  padding: 5px;
+}
