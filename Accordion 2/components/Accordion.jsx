@@ -14,12 +14,16 @@ const Accordion = ({ faqs }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       {faqs.map((item, index) => {
         return (
           <div>
-            <p onClick={() => handleClick(index)}>{item.question}</p>
-            {openIdx.includes(index) && <p>{item.answer} </p>}
+            <p className="question" onClick={() => handleClick(index)}>
+              {item.question}
+            </p>
+            {openIdx.includes(index) && (
+              <p className="answer">{item.answer} </p>
+            )}
           </div>
         );
       })}
