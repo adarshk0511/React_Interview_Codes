@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Accordion = ({ faqs }) => {
+  //Handeling of multiple faqs simultaneously
   const [openIdx, setOpenIdx] = useState([]);
 
   const handleClick = (index) => {
@@ -32,3 +33,4 @@ const Accordion = ({ faqs }) => {
 };
 
 export default Accordion;
+
