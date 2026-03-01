@@ -56,7 +56,9 @@ export default function App() {
 
         <div>
           {[...Array(numberOfPages).keys()].map((idx) => (
-            <button key={idx} onClick={() => setCurrentPage(idx)}>
+            <button key={idx} onClick={() => setCurrentPage(idx)}  style={{
+    fontWeight: currentPage === idx ? "bold" : "normal",
+  }}>
               {idx + 1}
             </button>
           ))}
